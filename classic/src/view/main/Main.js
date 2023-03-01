@@ -20,6 +20,7 @@ Ext.define('MyApp.view.main.Main', {
 
     controller: 'main',
     viewModel: 'main',
+    plugins: 'viewport',
 
     ui: 'navigation',
 
@@ -37,7 +38,13 @@ Ext.define('MyApp.view.main.Main', {
             },
             flex: 0
         },
-        iconCls: 'fa-th-list'
+        iconCls: 'fa-th-list',
+        items: [{
+            xtype: 'button',
+            text: 'Logout',
+            margin: '10 0',
+            handler: 'onClickButton'
+        }]
     },
 
     tabBar: {
@@ -60,6 +67,7 @@ Ext.define('MyApp.view.main.Main', {
     defaults: {
         bodyPadding: 20,
         tabConfig: {
+            plugins: 'responsive',
             responsiveConfig: {
                 wide: {
                     iconAlign: 'left',

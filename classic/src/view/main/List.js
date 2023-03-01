@@ -1,5 +1,5 @@
 /**
- * This view is an example list of people.
+ * This view is an example of tickets.
  */
 Ext.define('MyApp.view.main.List', {
     extend: 'Ext.grid.Panel',

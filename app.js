@@ -14,5 +14,5 @@ Ext.application({
     ],
 
     // The name of the initial view to create. 
-    mainView: 'MyApp.view.main.Main'
+    // mainView: 'MyApp.view.main.Main' //removed because we dont want to create the Main view if the user or admin is not yet logged in.
 });
