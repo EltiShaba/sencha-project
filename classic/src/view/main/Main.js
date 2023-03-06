@@ -90,6 +90,12 @@ Ext.define('MyApp.view.main.Main', {
             xtype: 'mainlist'
         }]
     }, {
+        title: 'Tickets',
+        iconCls: 'fa-user',
+        items: [{
+            xtype: 'mainticket'
+        }]
+    }, {
         title: 'Users',
         iconCls: 'fa-user',
         bind: {
