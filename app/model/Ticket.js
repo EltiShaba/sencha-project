@@ -1,18 +1,6 @@
 Ext.define("MyApp.model.Ticket", {
   extend: "MyApp.model.Base",
 
-  // fields: [
-  //    'id', 'ticket_type', 'ticket_type_id', 'price', 'inbound', 'outbound', 'from_date', 'to_date', 'seat_number'
-  // ]
-
-  // validators: {
-  //     unique: [
-  //         { type: 'uniqueness', field: ['inbound', 'outbound', 'from_date', 'to_date', 'seat_number'] }
-  //     ]
-  // }
-
-//   idProperty: "ticket_key", // specify the unique key field
-//   identifier: "sequential", // use a sequential ID generator for new records
   fields: [
     { name: "id", type: "int" },
     { name: "ticket_type", type: "string" },

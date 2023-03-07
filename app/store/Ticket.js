@@ -31,6 +31,7 @@ Ext.define("MyApp.store.Ticket", {
       if (successful) {
         var pageSize = store.getPageSize();//returns 100 rows
         var start = (store.currentPage - 1) * pageSize;//starting index of the records for the current page by multiplying the current page number        var end = start + pageSize;
+        var end = start + pageSize;
         store.removeAll();//removeAll method is called on the store to remove all of the initially loaded records
         store.add(records.slice(start, end));//add method is called to add only the first page of records to the store
       }
