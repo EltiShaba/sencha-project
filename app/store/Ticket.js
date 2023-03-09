@@ -8,12 +8,19 @@ Ext.define("MyApp.store.Ticket", {
     type: 'rest',
     url: 'https://sencha-js-default-rtdb.europe-west1.firebasedatabase.app/tickets.json', //url of database in Firebase
     writer: {
+      type: 'json',
       writeAllFields: true
     },
     reader: {
       type: 'json',
       rootProperty: 'tickets'// the field that holds all the data
     },
+    api: {
+      create: 'https://sencha-js-default-rtdb.europe-west1.firebasedatabase.app/tickets.json',
+      read: 'https://sencha-js-default-rtdb.europe-west1.firebasedatabase.app/tickets.json',
+      update: 'https://sencha-js-default-rtdb.europe-west1.firebasedatabase.app/tickets.json',
+      destroy: 'https://sencha-js-default-rtdb.europe-west1.firebasedatabase.app/tickets.json'
+    },  
     listeners: {
       exception: function(proxy, response, operation) {
         Ext.MessageBox.show({
@@ -26,6 +33,13 @@ Ext.define("MyApp.store.Ticket", {
     }
   },
   autoLoad: true,
+  autosync: true,
+  filters: [
+    {
+      property: 'Role',
+      value: 'admin'
+    }
+  ],
   listeners: {
     load: function(store, records, successful, operation, eOpts) {
       if (successful) {

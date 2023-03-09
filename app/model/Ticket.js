@@ -8,13 +8,18 @@ Ext.define("MyApp.model.Ticket", {
     { name: "price", type: "float" },
     { name: "inbound", type: "string" },
     { name: "outbound", type: "string" },
-    { name: "from_date", type: "date", dateFormat: "Y-m-d" },
-    { name: "to_date", type: "date", dateFormat: "Y-m-d" },
+    { name: "from_date", type: "date", dateFormat: "m/d/Y" },
+    { name: "to_date", type: "date", dateFormat: "m/d/Y" },
     { name: "seat_number", type: "string" },
   ],
 
   // define a unique key that's a combination of the 'id' and 'ticket_type' fields
-  getTicketKey: function () {
-    return this.get("id") + "_" + this.get("ticket_type");
-  },
+
+  /*
+    TODO: Validation functionality to be checked
+  */
+
+  // getTicketKey: function () {
+  //   return this.get("id") + "_" + this.get("ticket_type");
+  // },
 });

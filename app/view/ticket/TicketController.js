@@ -2,17 +2,54 @@ Ext.define('MyApp.view.ticket.TicketController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.ticket',
 
-    // onLoginClick: function() {
+    requires: [
+        // 'Ext.Msg'
+    ],
 
-    //     // Set the localStorage value to true
-    //     localStorage.setItem("LoggedIn", true);
+    onAddClick: function() {
+        var user = localStorage.getItem('Role');
+        if (user && user === 'admin') {
+            var grid = this.getView();
+            var store = grid.getStore();
+            var model = Ext.create('MyApp.model.Ticket', {
+                id: '',
+                inbound: '',
+                outbound: '',
+                ticket_type: '',
+                ticket_type_id: '',
+                price: 0,
+                from_date: new Date(),
+                to_date: new Date(),
+                seat_number: ''
+            });
+            store.insert(0, model);
+            console.log("check grid", grid.getPlugin('rowediting'))
+            grid.getPlugin('rowediting').startEdit(0, 0);
+        } else {
+            Ext.MessageBox.alert('Access Denied', 'Only admin can add tickets.');
+        }
+    },
 
-    //     // Remove Login Window
-    //     this.getView().destroy();
+    onRender: function() {
+        console.log('The Ticket view has been rendered!');
+    },
 
-    //     // Add the main view to the viewport
-    //     Ext.create({
-    //         xtype: 'app-main'
-    //     });
-    // }
+    onRemoveClick: function() {
+        var user = localStorage.getItem('Role');
+        if (user && user === 'admin') {
+            var grid = this.getView();
+            var store = grid.getStore();
+            var selection = grid.getSelection();
+            if (selection) {
+                store.remove(selection);
+            }
+        } else {
+            Ext.MessageBox.alert('Access Denied', 'Only admin can remove tickets.');
+        }
+    },
+
+    onSelectionChange: function() {
+        var removeBtn = this.lookupReference('btnRemove');
+        removeBtn.setDisabled(this.getView().getSelection().length === 0);
+    }
 });
