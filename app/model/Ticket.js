@@ -13,13 +13,30 @@ Ext.define("MyApp.model.Ticket", {
     { name: "seat_number", type: "string" },
   ],
 
-  // define a unique key that's a combination of the 'id' and 'ticket_type' fields
+  validators: {
+    fieldValidation: function (value) {
+      var store = Ext.getStore("ticket");
+      var isDuplicate = false;
 
-  /*
-    TODO: Validation functionality to be checked
-  */
+      store.each(function (rec) {
+        if (
+          rec.get("inbound") === value.inbound &&
+          rec.get("outbound") === value.outbound &&
+          rec.get("from_date").getTime() === value.from_date.getTime() &&
+          rec.get("to_date").getTime() === value.to_date.getTime() &&
+          rec.get("seat_number") === value.seat_number &&
+          rec !== value.record
+        ) {
+          isDuplicate = true;
+          return false; // break out of each loop
+        }
+      });
 
-  // getTicketKey: function () {
-  //   return this.get("id") + "_" + this.get("ticket_type");
-  // },
+      if (isDuplicate) {
+        return "Duplicate record";
+      }
+
+      return true;
+    },
+  },
 });

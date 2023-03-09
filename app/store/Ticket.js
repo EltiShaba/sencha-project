@@ -34,12 +34,6 @@ Ext.define("MyApp.store.Ticket", {
   },
   autoLoad: true,
   autosync: true,
-  filters: [
-    {
-      property: 'Role',
-      value: 'admin'
-    }
-  ],
   listeners: {
     load: function(store, records, successful, operation, eOpts) {
       if (successful) {
