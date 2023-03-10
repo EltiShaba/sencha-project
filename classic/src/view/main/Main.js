@@ -91,9 +91,15 @@ Ext.define('MyApp.view.main.Main', {
         }]
     }, {
         title: 'Tickets',
-        iconCls: 'fa-user',
+        iconCls: 'fas fa-ticket-alt',
         items: [{
             xtype: 'mainticket'
+        }]
+    },{
+        title: 'Chart',
+        iconCls: 'x-fa fa-table',
+        items: [{
+            xtype: 'chartview'
         }]
     }, {
         title: 'Users',
