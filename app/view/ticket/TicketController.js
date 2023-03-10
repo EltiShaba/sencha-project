@@ -23,7 +23,7 @@ Ext.define('MyApp.view.ticket.TicketController', {
                 seat_number: ''
             });
             store.insert(0, model);
-            console.log("check grid", grid.getPlugin('rowediting'))
+            //ERROR: Cannot read properties of null (reading 'startEdit'). Trying to fix the error, but without success.
             grid.getPlugin('rowediting').startEdit(0, 0);
         } else {
             Ext.MessageBox.alert('Access Denied', 'Only admin can add tickets.');
